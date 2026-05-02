@@ -607,7 +607,7 @@
     <div class="hero-eyebrow">AI Travel Companion</div>
     <h1>Discover<br><em>Türkiye</em></h1>
     <p class="hero-sub">Your personal AI guide — speaks your language,<br>knows every corner of this ancient land.</p>
-    <button class="hero-cta" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">
+    <button class="hero-cta" onclick="document.getElementById('dayi').scrollIntoView({behavior:'smooth'})">
       ✦ Try the AI Guide
     </button>
   </div>
@@ -833,7 +833,7 @@ Guidelines:
     showTyping();
 
     try {
-      const GEMINI_KEY = 'AIzaSyCevw9_KAIPU8gXzCAcZ8wltNRqEWwKdRc';
+      const GEMINI_KEY = 'AIzaSyD27_DFm8wUcz3uFO1aXMTQoQVdku9Homw';
       const geminiMessages = messages.map(m => ({
         role: m.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: m.content }]
