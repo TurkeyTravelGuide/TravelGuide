@@ -848,17 +848,6 @@ Guidelines:
         })
       });
 
-      const data = await response.json();
-      removeTyping();
-
-      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I had trouble connecting. Please try again!';
-      messages.push({ role: 'assistant', content: reply });
-      addMessage('assistant', reply);
-
-    } catch (err) {
-      removeTyping();
-      addMessage('assistant', 'Connection issue — please try again in a moment. 🙏');
-    }
 
     isTyping = false;
     document.getElementById('sendBtn').disabled = false;
