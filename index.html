@@ -418,7 +418,26 @@
         <button class="act-btn" onclick="setActivity(1.9, this)">⚡ Ekstra aktif — Sporcu / Ağır iş</button>
       </div>
     </div>
+// Yemekleri saklamak için
+let yemekler = JSON.parse(localStorage.getItem('yemekler')) || [];
 
+function yemekEkle() {
+    let isim = document.getElementById('yemekIsim').value;
+    let kalori = parseInt(document.getElementById('yemekKalori').value);
+    
+    yemekler.push({ isim, kalori, tarih: new Date().toLocaleDateString() });
+    localStorage.setItem('yemekler', JSON.stringify(yemekler));
+    
+    yemekleriGoster();
+}
+
+function yemekleriGoster() {
+    let bugun = new Date().toLocaleDateString();
+    let bugununYemekleri = yemekler.filter(y => y.tarih === bugun);
+    let toplamKalori = bugununYemekleri.reduce((t, y) => t + y.kalori, 0);
+    
+    // Ekrana listele ve toplam kaloriyi göster
+}
     <!-- Hedef -->
     <div class="card">
       <div class="card-title">🎯 Hedefiniz</div>
