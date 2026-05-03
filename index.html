@@ -418,26 +418,25 @@
         <button class="act-btn" onclick="setActivity(1.9, this)">⚡ Ekstra aktif — Sporcu / Ağır iş</button>
       </div>
     </div>
-// Yemekleri saklamak için
-let yemekler = JSON.parse(localStorage.getItem('yemekler')) || [];
-
-function yemekEkle() {
-    let isim = document.getElementById('yemekIsim').value;
-    let kalori = parseInt(document.getElementById('yemekKalori').value);
+<!-- Bugün Ne Yedim? Bölümü -->
+<div class="yemek-takibi">
+    <h3>🍽️ Bugün Ne Yedim?</h3>
     
-    yemekler.push({ isim, kalori, tarih: new Date().toLocaleDateString() });
-    localStorage.setItem('yemekler', JSON.stringify(yemekler));
+    <div class="yemek-ekleme">
+        <input type="text" id="yemekIsim" placeholder="Yemek adı (örn: Tavuk pilav)">
+        <input type="number" id="yemekKalori" placeholder="Kalori (örn: 450)">
+        <button onclick="yemekEkle()">➕ Ekle</button>
+    </div>
     
-    yemekleriGoster();
-}
-
-function yemekleriGoster() {
-    let bugun = new Date().toLocaleDateString();
-    let bugununYemekleri = yemekler.filter(y => y.tarih === bugun);
-    let toplamKalori = bugununYemekleri.reduce((t, y) => t + y.kalori, 0);
+    <div id="yemekListesi">
+        <!-- Eklenen yemekler burada listelenecek -->
+    </div>
     
-    // Ekrana listele ve toplam kaloriyi göster
-}
+    <div class="gunluk-toplam">
+        <strong>Bugünkü Toplam Kalori: </strong>
+        <span id="toplamKalori">0</span>
+    </div>
+</div>
     <!-- Hedef -->
     <div class="card">
       <div class="card-title">🎯 Hedefiniz</div>
