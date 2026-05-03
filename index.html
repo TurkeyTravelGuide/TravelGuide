@@ -617,11 +617,11 @@
   </div>
 </section>
 
-<!-- DEMO -->
-<section class="app-section" id="demo">
-  <div class="section-label">Live Demo</div>
+<!-- Türkiye -->
+<section class="app-section" id="Türkiye">
+  <div class="section-label">Live Türkiye</div>
   <h2 class="section-title">Ask Anything About Türkiye</h2>
-  <p class="section-desc">Powered by Claude AI. Ask about hidden gems, local food, transport tips, cultural etiquette — in any language.</p>
+  <p class="section-desc">Powered by Samet Dayi AI. Ask about hidden gems, local food, transport tips, cultural etiquette — in any language.</p>
 
   <div class="chips">
     <span class="chip" onclick="fillAndSend('Best hidden beaches near Bodrum?')">🏖️ Hidden beaches near Bodrum</span>
@@ -754,7 +754,7 @@
 </section>
 
 <footer>
-  Demo built with Claude AI · Türkiye AI Guide Concept · 2026
+  Eagiyimevim@gmail.com built with Samet Dayi AI · Türkiye AI Guide Concept · 2026
 </footer>
 
 <script>
@@ -833,24 +833,21 @@ Guidelines:
     showTyping();
 
     try {
-      const geminiMessages = messages.map(m => ({
-        role: m.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: m.content }]
-      }));
-
-      const response = await fetch('https://turkey-travel-api.eagiyimevim.workers.dev', {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents: geminiMessages
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: messages
         })
       });
 
       const data = await response.json();
       removeTyping();
 
-      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I had trouble connecting. Please try again!';
+      const reply = data.content?.[0]?.text || 'Sorry, I had trouble connecting. Please try again!';
       messages.push({ role: 'assistant', content: reply });
       addMessage('assistant', reply);
 
